@@ -28,10 +28,12 @@ docker compose down
 Контрактные тесты сверяют проверенный Compose-файл и разбирают HTML без запуска браузера. Нужен Python 3.12 или новее:
 
 ```bash
-python -m venv .venv
-python -m pip install -r requirements-dev.txt
-python -m pytest -q
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python -m pytest -q
 ```
+
+На Windows используйте `py -3.12 -m venv .venv`, затем замените `.venv/bin/python` на `.venv\Scripts\python.exe` в двух следующих командах.
 
 Тесты не заменяют `docker compose config -q` и HTTP-проверку: эти команды отдельно проверяются в GitHub Actions на Linux.
 
